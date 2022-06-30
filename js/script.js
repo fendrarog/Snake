@@ -84,7 +84,7 @@ function renderApp() {
     snake.pop();
   }
 
-  if (snakeX < box || snakeX > box * 13 || snakeY < box || snakeY > box * 13) {
+  if (snakeX < 0 || snakeX > box * 14 || snakeY < 0 || snakeY > box * 14) {
     clearInterval(refreshFrames);
   }
   if (direction === "left") snakeX -= box;
@@ -112,4 +112,4 @@ function renderApp() {
   ctx.stroke();
 }
 
-let refreshFrames = setInterval(renderApp, 170);
+let refreshFrames = setInterval(renderApp, 200);
