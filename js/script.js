@@ -5,6 +5,7 @@ const up = document.getElementById("up");
 const left = document.getElementById("left");
 const right = document.getElementById("right");
 const down = document.getElementById("down");
+const retry = document.getElementById("retry");
 
 const foodIcon = new Image();
 foodIcon.src = "./img/cheese.png";
@@ -24,6 +25,9 @@ snake[0] = {
   y: 7 * box,
 };
 
+retry.addEventListener("click", function () {
+  location.reload();
+});
 document.addEventListener("click", setDirectionNav);
 document.addEventListener("keydown", setDirection);
 let direction;
