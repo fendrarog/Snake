@@ -1,0 +1,30 @@
+.container {
+  min-height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(13, 247, 13);
+}
+
+.navigation {
+  min-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#retry{
+  min-width: 360px;
+  min-height: 25px;
+}
+
+#up,
+#down {
+  flex: 100% 0 0;
+  min-height: 50px;
+}
+#left,
+#right {
+  flex: 50% 0 0;
+  min-height: 50px;
+}
