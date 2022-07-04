@@ -93,15 +93,6 @@ function renderApp() {
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
 
-  /*   const isCrush = snake.reduce((acc, curr) => {
-    if (acc.x === curr.x && acc.y === curr.y) {
-      return curr;
-    } else {
-      return acc;
-    }
-  });
-  console.log(snake); */
-
   if (snakeX === food.x && snakeY === food.y) {
     eatdick.play();
     food = {
@@ -111,10 +102,6 @@ function renderApp() {
   } else {
     snake.pop();
   }
-
-  /* if (snakeX < 0 || snakeX > box * 14 || snakeY < 0 || snakeY > box * 14) {
-    clearInterval(refreshFrames);
-  } */
 
   if (direction === "left") {
     snakeX -= box;
@@ -134,7 +121,12 @@ function renderApp() {
     clearInterval(refreshFrames);
   }
 
-  if (snakeX < 0) {
+  if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height) {
+    crushAudio.play();
+    clearInterval(refreshFrames);
+  }
+
+/*   if (snakeX < 0) {
     snakeX = canvas.width - box;
   } else if (snakeX >= canvas.width) {
     snakeX = 0;
@@ -144,7 +136,7 @@ function renderApp() {
     snakeY = canvas.height - box;
   } else if (snakeY >= canvas.height) {
     snakeY = 0;
-  }
+  } */
 
   let updatedSnakeHead = {
     x: snakeX,
