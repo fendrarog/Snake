@@ -94,6 +94,7 @@ function renderApp() {
   let snakeY = snake[0].y;
 
   if (snakeX === food.x && snakeY === food.y) {
+    eatdick.currentTime = 0;
     eatdick.play();
     food = {
       x: Math.floor(Math.random() * 15) * box,
@@ -117,16 +118,23 @@ function renderApp() {
   }
 
   if (snake.slice(1).some((el) => el.x === snakeX && el.y === snakeY)) {
+    eatdick.pause();
     crushAudio.play();
     clearInterval(refreshFrames);
   }
 
-  if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height) {
+  if (
+    snakeX < 0 ||
+    snakeX >= canvas.width ||
+    snakeY < 0 ||
+    snakeY >= canvas.height
+  ) {
+    eatdick.pause();
     crushAudio.play();
     clearInterval(refreshFrames);
   }
 
-/*   if (snakeX < 0) {
+  /*   if (snakeX < 0) {
     snakeX = canvas.width - box;
   } else if (snakeX >= canvas.width) {
     snakeX = 0;
