@@ -74,7 +74,7 @@ function setDirection(e) {
   }
 }
 
-let ms = 300;
+let ms = 150;
 
 function renderApp() {
   ctx.fillStyle = "black";
