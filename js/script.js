@@ -74,9 +74,18 @@ function setDirection(e) {
   }
 }
 
-let ms = 170;
+let speed = 15;
+let count = 0;
 
-function renderApp() {
+function loop() {
+  let request = requestAnimationFrame(loop);
+
+  if (++count < speed) {
+    return;
+  }
+
+  count = 0;
+
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, box * 15, box * 15);
 
@@ -120,7 +129,7 @@ function renderApp() {
   if (snake.slice(1).some((el) => el.x === snakeX && el.y === snakeY)) {
     eatdick.pause();
     crushAudio.play();
-    clearInterval(refreshFrames);
+    cancelAnimationFrame(request);
   }
 
   if (
@@ -131,7 +140,7 @@ function renderApp() {
   ) {
     eatdick.pause();
     crushAudio.play();
-    clearInterval(refreshFrames);
+    cancelAnimationFrame(request);
   }
 
   /*   if (snakeX < 0) {
@@ -166,4 +175,4 @@ function renderApp() {
   ctx.stroke();
 }
 
-let refreshFrames = setInterval(renderApp, ms);
+requestAnimationFrame(loop);
