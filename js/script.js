@@ -74,7 +74,7 @@ function setDirection(e) {
   }
 }
 
-let speed = 30;
+let speed = 20;
 let count = 0;
 
 function loop() {
